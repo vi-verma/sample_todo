@@ -2,21 +2,22 @@ import classes from './ToDoList.module.css' ;
 import Button from "./Button";
 
 function ToDoList(props){
-    const deleteHandeler = (delInd) => {
-        props.workList.splice(delInd, 1);
+    const deleteHandeler = (delIndex) => {
+        props.workList.splice(delIndex, 1);
         props.setWorkList([...props.workList])
-        console.log('ww')
     };
 
-
+    const onEditHandeler = (index)=> {
+       props.setIndex(index);
+    };
     const list = props.workList.map((todo, index) => {
         return(
-            <li className={ classes.item}>
+            <li key={Math.random()} className={ classes.item}>
                 <div className={'col-sm-10 ' + classes.content}>
                     {todo}
                 </div>
                 <div className={'col-sm-1 ' + classes.del_btn}>
-                    <Button className={'btn btn-primary'}>Edit</Button>
+                    <Button  onClick={() => onEditHandeler(index)} className={'btn btn-primary'}>Edit</Button>
                 </div>
                 <div className={'col-sm-1 ' + classes.del_btn}>
                     <Button onClick={() => deleteHandeler(index)} className={'btn btn-danger'}>Delete</Button>
@@ -27,7 +28,7 @@ function ToDoList(props){
     return(
         <ul className={classes.list_item}>
             <div className='row'>
-            {list}
+                {list}
             </div>
         </ul>
     );
