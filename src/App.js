@@ -6,7 +6,7 @@ import ToDoList from './ToDoList';
 function App() {
   const [workList, setWorkList] = useState([]);
   const [index, setIndex] = useState('')
-// console.log(workList[index])
+console.log(workList[index])
   const onAddNewTask = (input) => {
     setWorkList([input, ...workList]);
     };

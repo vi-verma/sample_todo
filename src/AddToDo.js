@@ -1,16 +1,20 @@
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import classes from './AddToDo.module.css'
 import Button from './Button';
 
 function AddToDo(props){
     const [newTask, setNewTask] = useState(props.defaultValue || '');
+    useEffect(() => {
+        setNewTask(props.defaultValue)
+    },[props.defaultValue])
+    // console.log("prop" + props.defaultValue)
     // const newTaskRef = useRef();
-console.log(newTask)
+    // console.log(newTask + " state")
     const addNewTaskHandeler = () => {
         if(newTask){
             props.onSubmit(newTask);
             setNewTask('');
-            console.log(props.defaultValue);
+            // console.log(props.defaultValue);
         };
        
     };
@@ -18,7 +22,7 @@ console.log(newTask)
         if(e.keyCode === 13 && newTask ){
             props.onSubmit(newTask);
             setNewTask('');
-            console.log(e);
+            // console.log(e);
         };
     };
    
