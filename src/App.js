@@ -1,12 +1,15 @@
-import './App.css';
+import { useState } from 'react';
+import classes from  './App.module.css';
 import AddToDo from './AddToDo';
 import ToDoList from './ToDoList';
 
 function App() {
+  const [workList, setWorkList] = useState([]);
+
   return (
-    <div className="App">
-        <AddToDo></AddToDo>
-        <ToDoList></ToDoList>
+    <div className={classes.App}>
+        <AddToDo workList={workList} setWorkList={setWorkList}></AddToDo>
+        <ToDoList workList={workList} setWorkList={setWorkList}></ToDoList>
     </div>
   );
 }

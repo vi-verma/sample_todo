@@ -1,0 +1,25 @@
+.list_item{
+    list-style: none;
+    background-color: whitesmoke;
+    width: 70%;
+    margin-top: 1%;
+    border-radius: 20px;
+}
+.item{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin: 1%;
+    background-color: rgb(97, 9, 97);
+    border-radius: 12px;
+    width: 95%;
+    height: 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.del_btn{
+    margin: auto;
+}
+.content{
+    margin: auto;
+}
