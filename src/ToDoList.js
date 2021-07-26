@@ -2,6 +2,13 @@ import classes from './ToDoList.module.css' ;
 import Button from "./Button";
 
 function ToDoList(props){
+    const deleteHandeler = (delInd) => {
+        props.workList.splice(delInd, 1);
+        props.setWorkList([...props.workList])
+        console.log('ww')
+    };
+
+
     const list = props.workList.map((todo, index) => {
         return(
             <li className={ classes.item}>
@@ -12,7 +19,7 @@ function ToDoList(props){
                     <Button className={'btn btn-primary'}>Edit</Button>
                 </div>
                 <div className={'col-sm-1 ' + classes.del_btn}>
-                    <Button className={'btn btn-danger'}>Delete</Button>
+                    <Button onClick={() => deleteHandeler(index)} className={'btn btn-danger'}>Delete</Button>
                 </div>
             </li>
         );
