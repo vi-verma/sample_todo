@@ -4,6 +4,7 @@ import Button from "./Button";
 function ToDoList(props){
     const deleteHandeler = (delIndex) => {
         props.workList.splice(delIndex, 1);
+        localStorage.setItem('state', JSON.stringify(props.workList));
         props.setWorkList([...props.workList])
     };
 

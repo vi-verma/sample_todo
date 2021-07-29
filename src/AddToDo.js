@@ -1,12 +1,13 @@
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 import classes from './AddToDo.module.css'
 import Button from './Button';
 
 function AddToDo(props){
     const [newTask, setNewTask] = useState(props.defaultValue || '');
-    useEffect(() => {
-        setNewTask(props.defaultValue)
-    },[props.defaultValue])
+   
+    // useEffect(() => {
+    //     setNewTask(props.defaultValue)
+    // },[props.defaultValue])
     // console.log("prop" + props.defaultValue)
     // const newTaskRef = useRef();
     // console.log(newTask + " state")
@@ -16,7 +17,6 @@ function AddToDo(props){
             setNewTask('');
             // console.log(props.defaultValue);
         };
-       
     };
     const handleKeyUp = (e) => {
         if(e.keyCode === 13 && newTask ){
