@@ -5,24 +5,16 @@ import Button from './Button';
 function AddToDo(props){
     const [newTask, setNewTask] = useState(props.defaultValue || '');
    
-    // useEffect(() => {
-    //     setNewTask(props.defaultValue)
-    // },[props.defaultValue])
-    // console.log("prop" + props.defaultValue)
-    // const newTaskRef = useRef();
-    // console.log(newTask + " state")
     const addNewTaskHandeler = () => {
         if(newTask){
             props.onSubmit(newTask);
             setNewTask('');
-            // console.log(props.defaultValue);
         };
     };
     const handleKeyUp = (e) => {
         if(e.keyCode === 13 && newTask ){
             props.onSubmit(newTask);
             setNewTask('');
-            // console.log(e);
         };
     };
    

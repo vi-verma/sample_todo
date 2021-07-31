@@ -4,27 +4,27 @@ import AddToDo from './AddToDo';
 import ToDoList from './ToDoList';
 
 function App() {
-  const [workList, setWorkList] = useState([]);
+  const [toDos, setToDos] = useState([]);
   const [index, setIndex] = useState('')
   
   
   useEffect(() => {
     const tasks = JSON.parse(localStorage.getItem("state")) 
-    setWorkList(tasks || []) 
+    setToDos(tasks || []) 
   //  tasks ? setWorkList(tasks) :setWorkList([])
-  },[setWorkList])
+  },[setToDos])
   // console.log(workList[index])
 
   const onAddNewTask = (input) => {
-    const q = [input, ...workList]
-    setWorkList(q );
+    const q = [input, ...toDos]
+    setToDos(q );
     localStorage.setItem("state", JSON.stringify(q));
     };
 
   const editHandeler = (editedInput) => {
-    workList[index] = editedInput;
-    localStorage.setItem("state" , JSON.stringify(workList))
-    setWorkList([...workList]);
+    toDos[index] = editedInput;
+    localStorage.setItem("state" , JSON.stringify(toDos))
+    setToDos([...toDos]);
     setIndex('');
   };
 
@@ -35,18 +35,18 @@ function App() {
         <AddToDo 
           key={'1'} 
           setIndex={setIndex} 
-          defaultValue={workList[index]}
+          defaultValue={toDos[index]}
           onSubmit={onAddNewTask}/>
         :
         <AddToDo key={"2"}  
           onSubmit={editHandeler} 
-          defaultValue={workList[index]}
-          buttonText='Edit'/>
+          defaultValue={toDos[index]}
+          buttonText='Save'/>
       }
         <ToDoList 
           setIndex={setIndex} 
-          workList={workList} 
-          setWorkList={setWorkList}
+          workList={toDos} 
+          setWorkList={setToDos}
         />
     </div>
   );
